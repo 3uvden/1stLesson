@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace 'com.example.firstlessoncounter'
-    compileSdk 33   
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.firstlessoncounter"

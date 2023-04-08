@@ -1,9 +1,11 @@
 package com.example.firstlessoncounter;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.location.GnssAntennaInfo;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -53,6 +55,25 @@ public class MainActivity extends AppCompatActivity {
         toast.setGravity(Gravity.LEFT, 0, 0);
         toast.show();
         super.onStop();
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        outState.putInt("key", count);
+
+
+        Toast toast = Toast.makeText(this, "Запись данных в контейнер Bundle", Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        count = savedInstanceState.getInt("key");
+
+        Toast toast = Toast.makeText(this, "Считывание данных из контейнера Bundle", Toast.LENGTH_SHORT);
+        toast.show();
     }
 
     @Override
